@@ -113,12 +113,35 @@ make sure Python requirements are all installed correctly
 
 and Open http://localhost:3000 in browser
 
-## To dos
+## Deployment to Heroku
 
-Add React UI library
+Deploying to Heroku require significant configuration
 
-Add React Animation library
+The client and server must be deploy to different dyno/app
 
+Example: [Front End](https://uci-cubesat-dashboard.herokuapp.com/), [Back End](https://uci-cubesat-server.herokuapp.com/)
+
+For React NodeJS client, Heroku require you to have:
+
+Both `package.json` and `package-lock.json` at project's root directory
+
+Adding `NodeJS` and `https://github.com/mars/create-react-app-buildpack.git` build pack
+
+For Python Flask server, Heroku require you to have:
+
+`app.py` at project's root directory
+
+`web: gunicorn app:app` inside `Procfile` at project's root directory
+
+`pip` `requirements.txt` at project's root directory
+
+Adding `Python` build pack
+
+Additionally, proxies setting inside `package.json` should be removed prior to deploying to heroku
+
+Https requests inside both client and server should use the full address, eg: `https://server.herokuapp.com/endpoint`
+
+Instead of using proxy setting: `https://127.0.0.1/` and `/endpoint` in request
 
 ## Available Scripts
 
