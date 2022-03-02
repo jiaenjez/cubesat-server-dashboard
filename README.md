@@ -1,8 +1,10 @@
 # CubeSAT Satellite Dashboard
 
+Author: Jiaen Zhang: jiaenjez@gmail.com, Hailey Lin: weixil4@uci.edu
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Make sure you have `python3`, `pip3`, `brew`, `yarn`, `node`, `npm`, and `nvm` installed
+Make sure you have `python3`, `pip3`, `brew`, `node`, `npm`, and `nvm` installed
 
 ## API dependency
 
