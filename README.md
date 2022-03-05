@@ -1,4 +1,4 @@
-# CubeSAT Satellite Dashboard
+# CubeSAT Satellite Server Dashboard
 
 Author: Jiaen Zhang: jiaenjez@gmail.com, Hailey Lin: weixil4@uci.edu
 
