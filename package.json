@@ -50,6 +50,7 @@
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "prop-types": "^15.8.1"
   }
 }
