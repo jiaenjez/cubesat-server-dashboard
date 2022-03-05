@@ -65,7 +65,7 @@ Inside `/py-satellite-dashboard/.env`
 
 Paste this line: `DB_URL=postgresql://omoglffn:<PASSWORD_GOES_HERE>@castor.db.elephantsql.com/omoglffn`
 
-## Run Flask App
+## Setup Flask App
 
 Setup `venv` virtualenv
 
@@ -75,7 +75,7 @@ Setup `venv` virtualenv
 
 `. venv/bin/activate`
 
-`pip install -r 'src/python/requirements.txt'`
+`pip install -r 'requirements.txt'`
 
 Create a `.flaskenv` Flask config file
 
