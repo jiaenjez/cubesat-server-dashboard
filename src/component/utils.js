@@ -1,5 +1,5 @@
 const getPrediction = (latLng, satellite) => {
-  return fetch('/prediction', {
+  return fetch('https://uci-cubesat-server.herokuapp.com/prediction', {
     method: 'POST',
     mode: 'cors',
     headers: {
@@ -16,7 +16,7 @@ const getPrediction = (latLng, satellite) => {
 };
 
 const getAvailableSatellite = () => {
-  return fetch('/available_satellite', {
+  return fetch('https://uci-cubesat-server.herokuapp.com/available_satellite', {
     method: 'GET',
     mode: 'cors',
     headers: {
