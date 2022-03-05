@@ -9,7 +9,7 @@ def dbCommit():
     dbModel.db.session.commit()
 
 
-def dbWrite(entryArray):
+def dbWrite(entryArray: list):
     for entry in entryArray:
         dbModel.db.session.add(entry)
 
@@ -51,6 +51,13 @@ def dbRead(queryName, *args, **kwargs):
 def dbDropTable(tableName):
     dbCursor = appConfig.dbConnection.cursor()
     dbCursor.execute(dbQueries.queries["drop_table_by_name"](tableName))
+    dbModel.db.session.commit()
+
+
+def dbTruncateTable(tableName):
+    dbCursor = appConfig.dbConnection.cursor()
+    dbCursor.execute(dbQueries.queries["truncate_table_by_name"](tableName))
+    dbModel.db.session.commit()
 
 
 def dbClose():
@@ -59,7 +66,9 @@ def dbClose():
 
 def dbDropAll():
     dbModel.db.drop_all()
+    dbModel.db.session.commit()
 
 
 def dbCreateAll():
     dbModel.db.create_all()
+    dbModel.db.session.commit()
