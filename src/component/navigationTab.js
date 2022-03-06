@@ -2,7 +2,8 @@
 import React from 'react';
 import Time from './clock';
 import Logo from './logo';
-import Map from './map';
+import LiveMap from './liveMap';
+import Prediction from './prediction';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -54,21 +55,21 @@ const NavigationTab = () => {
       <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
         <Tabs value={value}
           onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Map" {...allyProps(0)} />
-          <Tab label="Email" {...allyProps(1)} />
-          <Tab label="Login" {...allyProps(2)} />
+          <Tab label="Prediction" {...allyProps(0)} />
+          <Tab label="Live Map" {...allyProps(1)} />
+          <Tab label="Email" {...allyProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
         <Time />
         <Logo />
-        <Map />
+        <Prediction />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Email
+        <LiveMap />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Login
+        Email
       </TabPanel>
     </Box>
   );
