@@ -20,12 +20,17 @@ import {
   Paper
 } from '@mui/material';
 import moment from 'moment';
+import {
+  DEFAULT_ZOOM,
+  DEFAULT_LATITUDE,
+  DEFAULT_LONGITUDE
+} from './constant';
 
 // eslint-disable-next-line no-undef
 const API_KEY = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
-const DEFAULT_CURSOR = {lat: 33.6405, lng: -117.8443};
+const DEFAULT_CURSOR = {lat: DEFAULT_LATITUDE, lng: -DEFAULT_LONGITUDE};
 
-const Map = () => {
+const Prediction = () => {
   const [cursorLatLng, setCursorLatLng] =
       useState(DEFAULT_CURSOR);
   const [upcomingPass, setUpcomingPass] =
@@ -60,7 +65,7 @@ const Map = () => {
         containerElement: <div style={{height: `400px`}} />,
         mapElement: <div style={{height: `100%`}} />
       }),
-      withState('zoom', 'onZoomChange', 8),
+      withState('zoom', 'onZoomChange', DEFAULT_ZOOM),
       withHandlers(() => {
         const refs = {
           map: undefined
@@ -81,7 +86,7 @@ const Map = () => {
     <GoogleMap
       ref={props.onMapMounted}
       defaultCenter={cursorLatLng}
-      defaultZoom={7}
+      defaultZoom={DEFAULT_ZOOM}
       zoom={props.zoom}
       onZoomChanged={props.onZoomChanged}
       onClick={(mouseEvent) => {
@@ -160,4 +165,4 @@ const Map = () => {
   </div>;
 };
 
-export default Map;
+export default Prediction;
