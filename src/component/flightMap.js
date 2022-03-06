@@ -18,13 +18,13 @@ const FlightMap = () => {
         longitude: DEFAULT_LONGITUDE,
         zoom: DEFAULT_ZOOM
       }}
-      style={{width: 400, height: 400}}
+      style={{width: 800, height: 600}}
       mapStyle="mapbox://styles/mapbox/streets-v9"
       mapboxAccessToken={MAPBOX_TOKEN}
     >
-      <Marker latitude={33.6405}
-        longitude={-117.8443}
-        color="red" />
+      {/*<Marker latitude={33.6405}*/}
+      {/*  longitude={-117.8443}*/}
+      {/*  color="red" />*/}
     </Map>
   );
 };
