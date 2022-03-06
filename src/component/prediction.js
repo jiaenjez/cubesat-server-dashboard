@@ -28,7 +28,7 @@ import {
 
 // eslint-disable-next-line no-undef
 const API_KEY = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
-const DEFAULT_CURSOR = {lat: DEFAULT_LATITUDE, lng: -DEFAULT_LONGITUDE};
+const DEFAULT_CURSOR = {lat: DEFAULT_LATITUDE, lng: DEFAULT_LONGITUDE};
 
 const Prediction = () => {
   const [cursorLatLng, setCursorLatLng] =

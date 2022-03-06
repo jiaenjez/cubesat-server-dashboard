@@ -1,14 +1,18 @@
 import React from 'react';
 import NavigationTab from './component/navigationTab';
 import './App.css';
+import {CssBaseline} from '@mui/material';
 
 const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <NavigationTab />
-      </header>
-    </div>
+    <React.Fragment>
+      <CssBaseline />
+      <div className="App">
+        <header className="App-header">
+          <NavigationTab />
+        </header>
+      </div>
+    </React.Fragment>
   );
 };
 

@@ -1,17 +1,31 @@
-import * as React from 'react';
-import Map from 'react-map-gl';
+/* eslint-disable */
+import React from 'react';
+import Map, {Marker} from 'react-map-gl';
+import {
+  DEFAULT_ZOOM,
+  DEFAULT_LATITUDE,
+  DEFAULT_LONGITUDE
+} from './constant';
+
+// eslint-disable-next-line no-undef
+const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
 const LiveMap = () => {
   return (
     <Map
       initialViewState={{
-        longitude: -122.4,
-        latitude: 37.8,
-        zoom: 14
+        latitude: DEFAULT_LATITUDE,
+        longitude: DEFAULT_LONGITUDE,
+        zoom: DEFAULT_ZOOM
       }}
-      style={{width: 600, height: 400}}
+      style={{width: 400, height: 400}}
       mapStyle="mapbox://styles/mapbox/streets-v9"
-    />
+      mapboxAccessToken={MAPBOX_TOKEN}
+    >
+      <Marker latitude={33.6405}
+        longitude={-117.8443}
+        color="red" />
+    </Map>
   );
 };
 

@@ -36,13 +36,6 @@ TabPanel.propTypes = {
   value: PropTypes.number.isRequired
 };
 
-const allyProps = (index) => {
-  return {
-    'id': `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`
-  };
-};
-
 const NavigationTab = () => {
   const [value, setValue] = React.useState(0);
 
@@ -55,9 +48,9 @@ const NavigationTab = () => {
       <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
         <Tabs value={value}
           onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Prediction" {...allyProps(0)} />
-          <Tab label="Live Map" {...allyProps(1)} />
-          <Tab label="Email" {...allyProps(2)} />
+          <Tab label="Prediction" />
+          <Tab label="Live Map" />
+          <Tab label="Email" />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
