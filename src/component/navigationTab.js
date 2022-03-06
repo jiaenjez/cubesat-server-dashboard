@@ -2,7 +2,7 @@
 import React from 'react';
 import Time from './clock';
 import Logo from './logo';
-import LiveMap from './liveMap';
+import FlightMap from './flightMap';
 import Prediction from './prediction';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
@@ -59,7 +59,7 @@ const NavigationTab = () => {
         <Prediction />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <LiveMap />
+        <FlightMap />
       </TabPanel>
       <TabPanel value={value} index={2}>
         Email

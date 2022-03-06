@@ -10,7 +10,7 @@ import {
 // eslint-disable-next-line no-undef
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
-const LiveMap = () => {
+const FlightMap = () => {
   return (
     <Map
       initialViewState={{
@@ -29,4 +29,4 @@ const LiveMap = () => {
   );
 };
 
-export default LiveMap;
+export default FlightMap;
