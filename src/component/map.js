@@ -1,5 +1,5 @@
-/* eslint-disable */
-import React, {useEffect, useState} from 'react';
+/* eslint-disable react/prop-types */
+import React, {useState} from 'react';
 import {compose, withProps, withState, withHandlers} from 'recompose';
 import {
   withScriptjs, withGoogleMap, GoogleMap, Marker
@@ -21,11 +21,13 @@ import {
 } from '@mui/material';
 import moment from 'moment';
 
+// eslint-disable-next-line no-undef
 const API_KEY = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
+const DEFAULT_CURSOR = {lat: 33.6405, lng: -117.8443};
 
 const Map = () => {
   const [cursorLatLng, setCursorLatLng] =
-      useState({lat: 33.6405, lng: -117.8443});
+      useState(DEFAULT_CURSOR);
   const [upcomingPass, setUpcomingPass] =
       useState({});
   const [dropdownSelect, setDropdownSelected] =
@@ -38,15 +40,17 @@ const Map = () => {
   if (!isInitialized) {
     getAvailableSatellite().then((data) => {
       setSatelliteList(data);
+      setIsInitialized(true);
     });
-    setIsInitialized(true);
   }
 
   const handleSelectorChange = (event) => {
-    setDropdownSelected(event.target.value);
-    getPrediction(cursorLatLng, dropdownSelect).then((prediction) => {
+    getPrediction({lat: _.get(cursorLatLng, 'lat', DEFAULT_CURSOR.lat),
+      lng: _.get(cursorLatLng, 'lng', DEFAULT_CURSOR.lng)},
+    dropdownSelect).then((prediction) => {
       setUpcomingPass(prediction);
     });
+    setDropdownSelected(event.target.value);
   };
 
   const EmbeddedMap = compose(
@@ -129,31 +133,31 @@ const Map = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {_.map(upcomingPass, (k, v) => (
+          {_.map(upcomingPass, (value, key) => (
             <TableRow
-              key={v}
+              key={key}
               sx={{'&:last-child td, &:last-child th': {border: 0}}}
             >
-              <TableCell align="left">{moment(v)
-                  .format('MMMM Do YYYY, h:mm:ss a')}</TableCell>
-              <TableCell align="left">{moment(`${JSON.parse(k)['rise']}+00:00`)
-                  .format('h:mm:ss a')}</TableCell>
-              <TableCell align="left">{moment(`${JSON.parse(k)['set']}+00:00`)
-                  .format('h:mm:ss a')}</TableCell>
-              <TableCell align="left">{JSON.parse(k)['duration']}</TableCell>
+              <TableCell align="left">
+                {moment(key).format('MMMM Do YYYY, h:mm:ss a')}
+              </TableCell>
+              <TableCell align="left">
+                {moment(`${JSON.parse(value)['rise']}+00:00`)
+                    .format('h:mm:ss a')}
+              </TableCell>
+              <TableCell align="left">
+                {moment(`${JSON.parse(value)['set']}+00:00`)
+                    .format('h:mm:ss a')}
+              </TableCell>
+              <TableCell align="left">
+                {JSON.parse(value)['duration']}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
-
-    {/* <ol>*/}
-    {/*  {_.map(upcomingPass, (k, v) => (*/}
-    {/*    <li>{v}: {k}</li>*/}
-    {/*  ))}*/}
-    {/* </ol>*/}
   </div>;
 };
 
 export default Map;
-/* eslint-enable */
